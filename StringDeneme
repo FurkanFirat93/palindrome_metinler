@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class StringDeneme {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Bir metin girin: ");
+        String input = scanner.nextLine();
+
+        if (isPalindrome(input)) {
+            System.out.println("Girilen metin bir palindromdur.");
+            System.out.println("Metin büyük harflerle: " + input.toUpperCase());
+        } else {
+            System.out.println("Girilen metin bir palindrom değildir.");
+            System.out.println("Metin küçük harflerle: " + input.toLowerCase());
+        }
+    }
+
+    public static boolean isPalindrome(String text) {
+        text = text.toLowerCase().replaceAll("[^a-z0-9]", ""); // Sadece harf ve rakamları alıyoruz
+        int left = 0;
+        int right = text.length() - 1;
+        
+        while (left < right) {
+            if (text.charAt(left) != text.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        
+        return true;
+    }
+}
